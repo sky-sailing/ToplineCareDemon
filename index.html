@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Topline Care - 卓越长者居家护理服务</title>
+    <title data-translate-id="page-title">Topline Care - 卓越长者居家护理服务</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,6 +27,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Noto Sans SC', 'Poppins', sans-serif;
             line-height: 1.7;
@@ -41,15 +45,14 @@
         }
 
         header {
-            background: var(--background-light);
-            padding: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.85);
         }
 
         .header-content {
@@ -71,6 +74,12 @@
             margin-right: 0.5rem;
         }
 
+        .nav-and-lang {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .main-nav a {
             color: var(--text-light);
             text-decoration: none;
@@ -81,6 +90,30 @@
 
         .main-nav a:hover, .main-nav a.active {
             color: var(--primary-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .lang-switcher a {
+            padding: 0.25rem 0.75rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-switcher a.active {
+            background-color: var(--background-light);
+            color: var(--primary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .cta-button {
@@ -252,6 +285,17 @@
             color: var(--text-light);
             margin-top: 4rem;
         }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .menu-toggle .material-icons-outlined {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+        }
 
         @media (max-width: 992px) {
             .about-section {
@@ -261,35 +305,34 @@
             .about-content h2 {
                 text-align: center;
             }
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
+            .cta-button-main {
+                display: none;
+            }
+            .nav-and-lang {
+                display: none;
                 flex-direction: column;
+                width: 100%;
+                background-color: white;
+                padding: 1rem 0;
                 gap: 1rem;
             }
             .main-nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
                 gap: 1rem;
+                align-items: center;
+                width: 100%;
             }
-            .main-nav a {
-                margin-left: 0;
-            }
+            .main-nav a { margin-left: 0; }
+            .header-content { flex-wrap: wrap; }
+            .menu-toggle { display: block; }
+            .nav-and-lang.active { display: flex; }
+        }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            .section {
-                padding: 3rem 0;
-            }
-            .section-title, .final-cta-section h2, .about-content h2 {
-                font-size: 2rem;
-            }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section { padding: 3rem 0; }
+            .section-title, .final-cta-section h2, .about-content h2 { font-size: 2rem; }
         }
 
     </style>
@@ -302,60 +345,69 @@
                 <span class="material-icons-outlined">spa</span>
                 Topline Care
             </a>
-            <nav class="main-nav">
-                <a href="#about" class="active">关于我们</a>
-                <a href="#values">我们的价值观</a>
-                <a href="#services">我们的服务</a>
-            </nav>
-            <a href="#" class="cta-button">免费咨询</a>
+            <button class="menu-toggle">
+                <span class="material-icons-outlined">menu</span>
+            </button>
+            <div class="nav-and-lang">
+                <nav class="main-nav">
+                    <a href="#about" data-translate-id="nav-about">关于我们</a>
+                    <a href="#values" data-translate-id="nav-values">我们的价值观</a>
+                    <a href="#services" data-translate-id="nav-services">我们的服务</a>
+                </nav>
+                <div class="lang-switcher">
+                    <a href="#" data-lang="zh" class="active">中文</a>
+                    <a href="#" data-lang="en">EN</a>
+                </div>
+            </div>
+            <a href="#" class="cta-button cta-button-main" data-translate-id="cta-button-header">免费咨询</a>
         </div>
     </header>
 
     <main>
         <section class="hero">
             <div class="container">
-                <h1>值得信赖的多元文化<span>长者居家护理</span>伙伴</h1>
-                <p>Topline Care 是一家卓越的长者居家护理服务提供商，我们以同情心、专业知识和对文化个性的深刻尊重为基石，自豪地为我们的多元化社区服务。我们致力于让长者在自己家中安全、舒适且有尊严地生活。</p>
-                <a href="#services" class="cta-button">了解我们的服务</a>
+                <h1 data-translate-id="hero-title">值得信赖的多元文化<span>长者居家护理</span>伙伴</h1>
+                <p data-translate-id="hero-subtitle">Topline Care 是一家卓越的长者居家护理服务提供商，我们以同情心、专业知识和对文化个性的深刻尊重为基石，自豪地为我们的多元化社区服务。我们致力于让长者在自己家中安全、舒适且有尊严地生活。</p>
+                <a href="#services" class="cta-button" data-translate-id="hero-cta">了解我们的服务</a>
             </div>
         </section>
 
         <section id="about" class="section">
             <div class="container about-section">
                 <div class="about-content">
-                    <h2>我们的愿景：成为社区中最值得信赖的关怀伙伴</h2>
-                    <p>我们的愿景是成为我们社区中最值得信赖和最具同情心的家庭护理伙伴，为文化敏感型长者护理设立卓越标准。我们渴望创造一个世界，让每一位长者都能在熟悉的家中舒适地、优雅地老去。</p>
+                    <h2 data-translate-id="about-title">我们的愿景：成为社区中最值得信赖的关怀伙伴</h2>
+                    <p data-translate-id="about-p">我们的愿景是成为我们社区中最值得信赖和最具同情心的家庭护理伙伴，为文化敏感型长者护理设立卓越标准。我们渴望创造一个世界，让每一位长者都能在熟悉的家中舒适地、优雅地老去。</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1576765608866-5b41c2b5a51c?q=80&w=2070&auto=format&fit=crop" alt="一位护理人员和一位长者在一起微笑">
+                    <img src="https://images.unsplash.com/photo-1576765608866-5b41c2b5a51c?q=80&w=2070&auto=format&fit=crop" alt="A caregiver and a senior citizen smiling together">
                 </div>
             </div>
         </section>
 
         <section id="values" class="section" style="background-color: var(--secondary-color);">
             <div class="container">
-                <h2 class="section-title">我们的价值观</h2>
-                <p class="section-subtitle">我们的关怀建立在四大核心价值观之上，确保每一位客户都能得到最优质的服务。</p>
+                <h2 class="section-title" data-translate-id="values-title">我们的价值观</h2>
+                <p class="section-subtitle" data-translate-id="values-subtitle">我们的关怀建立在四大核心价值观之上，确保每一位客户都能得到最优质的服务。</p>
                 <div class="grid">
                     <div class="card">
                         <span class="material-icons-outlined">favorite_border</span>
-                        <h3>卓越同情心</h3>
-                        <p>我们用心服务，用专业护航。我们超越职责，提供真诚、发自内心的关怀。</p>
+                        <h3 data-translate-id="value1-title">卓越同情心</h3>
+                        <p data-translate-id="value1-p">我们用心服务，用专业护航。我们超越职责，提供真诚、发自内心的关怀。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">diversity_3</span>
-                        <h3>尊重多样性</h3>
-                        <p>我们尊重客户及其家庭独特的文化背景、语言和传统，确保护理充满尊重和个人意义。</p>
+                        <h3 data-translate-id="value2-title">尊重多样性</h3>
+                        <p data-translate-id="value2-p">我们尊重客户及其家庭独特的文化背景、语言和传统，确保护理充满尊重和个人意义。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">verified_user</span>
-                        <h3>专业诚信</h3>
-                        <p>我们团队的每位成员都是经过认证的个人支持工作者(PSW)，确保最高的技能、安全和道德标准。</p>
+                        <h3 data-translate-id="value3-title">专业诚信</h3>
+                        <p data-translate-id="value3-p">我们团队的每位成员都是经过认证的个人支持工作者(PSW)，确保最高的技能、安全和道德标准。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">groups</span>
-                        <h3>以社区为中心</h3>
-                        <p>我们不仅仅是一项服务；我们是社区的一部分。我们致力于为我们有幸服务的长者的福祉做出贡献。</p>
+                        <h3 data-translate-id="value4-title">以社区为中心</h3>
+                        <p data-translate-id="value4-p">我们不仅仅是一项服务；我们是社区的一部分。我们致力于为我们有幸服务的长者的福祉做出贡献。</p>
                     </div>
                 </div>
             </div>
@@ -363,38 +415,38 @@
 
         <section id="services" class="section">
             <div class="container">
-                <h2 class="section-title">我们的服务</h2>
-                <p class="section-subtitle">我们由经过认证的PSW提供全面的服务，旨在为长者提供全方位的支持。</p>
+                <h2 class="section-title" data-translate-id="services-title">我们的服务</h2>
+                <p class="section-subtitle" data-translate-id="services-subtitle">我们由经过认证的PSW提供全面的服务，旨在为长者提供全方位的支持。</p>
                 <div class="grid">
                     <div class="card">
                         <span class="material-icons-outlined">self_care</span>
-                        <h3>个人护理</h3>
-                        <p>协助进行日常生活活动（ADLs），如洗浴、穿衣、梳理和行动。</p>
+                        <h3 data-translate-id="service1-title">个人护理</h3>
+                        <p data-translate-id="service1-p">协助进行日常生活活动（ADLs），如洗浴、穿衣、梳理和行动。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">sentiment_very_satisfied</span>
-                        <h3>陪伴服务</h3>
-                        <p>有意义的交谈、社交互动和陪同赴约，以对抗孤独感，促进心理健康。</p>
+                        <h3 data-translate-id="service2-title">陪伴服务</h3>
+                        <p data-translate-id="service2-p">有意义的交谈、社交互动和陪同赴约，以对抗孤独感，促进心理健康。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">restaurant_menu</span>
-                        <h3>膳食准备</h3>
-                        <p>计划和准备满足饮食需求和文化偏好的营养餐食。</p>
+                        <h3 data-translate-id="service3-title">膳食准备</h3>
+                        <p data-translate-id="service3-p">计划和准备满足饮食需求和文化偏好的营养餐食。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">cleaning_services</span>
-                        <h3>轻度家务</h3>
-                        <p>确保一个干净、安全、舒适的生活环境。</p>
+                        <h3 data-translate-id="service4-title">轻度家务</h3>
+                        <p data-translate-id="service4-p">确保一个干净、安全、舒适的生活环境。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">medication</span>
-                        <h3>用药提醒</h3>
-                        <p>及时提醒客户服用他们处方的药物。</p>
+                        <h3 data-translate-id="service5-title">用药提醒</h3>
+                        <p data-translate-id="service5-p">及时提醒客户服用他们处方的药物。</p>
                     </div>
                     <div class="card">
                         <span class="material-icons-outlined">family_restroom</span>
-                        <h3>家庭暂息服务</h3>
-                        <p>为家庭照顾者提供急需的休息，让他们知道挚爱之人正被妥善照顾。</p>
+                        <h3 data-translate-id="service6-title">家庭暂息服务</h3>
+                        <p data-translate-id="service6-p">为家庭照顾者提供急需的休息，让他们知道挚爱之人正被妥善照顾。</p>
                     </div>
                 </div>
             </div>
@@ -403,28 +455,135 @@
         <section class="section">
             <div class="container">
                 <div class="final-cta-section">
-                    <h2>我们精通关怀与同情的语言</h2>
-                    <p>在Topline Care，我们多元文化的团队能够轻松跨越沟通障碍，建立信任。我们不仅提供护理，更提供安心。</p>
-                    <a href="#" class="cta-button">立即联系我们</a>
+                    <h2 data-translate-id="final-cta-title">我们精通关怀与同情的语言</h2>
+                    <p data-translate-id="final-cta-p">在Topline Care，我们多元文化的团队能够轻松跨越沟通障碍，建立信任。我们不仅提供护理，更提供安心。</p>
+                    <a href="#" class="cta-button" data-translate-id="final-cta-button">立即联系我们</a>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Topline Care. 版权所有。</p>
+            <p data-translate-id="footer-text">&copy; 2025 Topline Care. 版权所有。</p>
         </div>
     </footer>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        const translations = {
+            en: {
+                "page-title": "Topline Care - Premier In-Home Senior Care",
+                "nav-about": "About Us",
+                "nav-values": "Our Values",
+                "nav-services": "Our Services",
+                "cta-button-header": "Free Consultation",
+                "hero-title": "Your Trusted Partner in Multicultural <span>Senior In-Home Care</span>",
+                "hero-subtitle": "Topline Care is a premier provider of in-home senior care services, proudly serving our diverse community. Our company is built upon a foundation of compassion, expertise, and a deep respect for cultural individuality. We are dedicated to enabling seniors to live safely, comfortably, and with dignity in their own homes.",
+                "hero-cta": "Explore Our Services",
+                "about-title": "Our Vision: To be the most trusted and compassionate home care partner in our community.",
+                "about-p": "Our vision is to be the most trusted and compassionate home care partner in our community, setting the standard for excellence in culturally sensitive senior care. We aspire to create a world where every senior can age gracefully in the familiar comfort of home.",
+                "values-title": "Our Values",
+                "values-subtitle": "Our care is built on four core values, ensuring the highest quality of service for every client.",
+                "value1-title": "Compassionate Excellence",
+                "value1-p": "Our services are delivered with a kind heart and a professional hand. We go beyond mere duty to provide genuine, heartfelt care.",
+                "value2-title": "Respect for Diversity",
+                "value2-p": "We honor the unique cultural backgrounds, languages, and traditions of our clients and their families, ensuring care that is respectful and personally meaningful.",
+                "value3-title": "Professional Integrity",
+                "value3-p": "Every member of our care team is a certified Personal Support Worker (PSW), ensuring the highest standards of skill, safety, and ethical conduct.",
+                "value4-title": "Community-Centric",
+                "value4-p": "We are not just a service; we are a part of the community. We build strong, lasting relationships and are committed to enhancing the well-being of the seniors we are privileged to serve.",
+                "services-title": "Our Services",
+                "services-subtitle": "Our comprehensive range of services, delivered by our certified PSWs, is designed to support the whole person.",
+                "service1-title": "Personal Care",
+                "service1-p": "Assistance with activities of daily living (ADLs) such as bathing, dressing, grooming, and mobility.",
+                "service2-title": "Companionship",
+                "service2-p": "Meaningful conversation, social interaction, and accompaniment to appointments to combat loneliness and promote mental well-being.",
+                "service3-title": "Meal Preparation",
+                "service3-p": "Planning and preparing nutritious meals that cater to dietary needs and cultural preferences.",
+                "service4-title": "Light Housekeeping",
+                "service4-p": "Ensuring a clean, safe, and comfortable living environment.",
+                "service5-title": "Medication Reminders",
+                "service5-p": "Prompting clients to take their prescribed medications on time.",
+                "service6-title": "Respite for Families",
+                "service6-p": "Providing family caregivers with much-needed breaks, knowing their loved ones are in capable and caring hands.",
+                "final-cta-title": "We speak the language of care and compassion, fluently.",
+                "final-cta-p": "At Topline Care, our multicultural team allows us to bridge communication gaps and build trust effortlessly. We don't just provide care; we provide peace of mind.",
+                "final-cta-button": "Contact Us Now",
+                "footer-text": "&copy; 2025 Topline Care. All Rights Reserved."
+            },
+            zh: {
+                "page-title": "Topline Care - 卓越长者居家护理服务",
+                "nav-about": "关于我们",
+                "nav-values": "我们的价值观",
+                "nav-services": "我们的服务",
+                "cta-button-header": "免费咨询",
+                "hero-title": "值得信赖的多元文化<span>长者居家护理</span>伙伴",
+                "hero-subtitle": "Topline Care 是一家卓越的长者居家护理服务提供商，我们以同情心、专业知识和对文化个性的深刻尊重为基石，自豪地为我们的多元化社区服务。我们致力于让长者在自己家中安全、舒适且有尊严地生活。",
+                "hero-cta": "了解我们的服务",
+                "about-title": "我们的愿景：成为社区中最值得信赖的关怀伙伴",
+                "about-p": "我们的愿景是成为我们社区中最值得信赖和最具同情心的家庭护理伙伴，为文化敏感型长者护理设立卓越标准。我们渴望创造一个世界，让每一位长者都能在熟悉的家中舒适地、优雅地老去。",
+                "values-title": "我们的价值观",
+                "values-subtitle": "我们的关怀建立在四大核心价值观之上，确保每一位客户都能得到最优质的服务。",
+                "value1-title": "卓越同情心",
+                "value1-p": "我们用心服务，用专业护航。我们超越职责，提供真诚、发自内心的关怀。",
+                "value2-title": "尊重多样性",
+                "value2-p": "我们尊重客户及其家庭独特的文化背景、语言和传统，确保护理充满尊重和个人意义。",
+                "value3-title": "专业诚信",
+                "value3-p": "我们团队的每位成员都是经过认证的个人支持工作者(PSW)，确保最高的技能、安全和道德标准。",
+                "value4-title": "以社区为中心",
+                "value4-p": "我们不仅仅是一项服务；我们是社区的一部分。我们致力于为我们有幸服务的长者的福祉做出贡献。",
+                "services-title": "我们的服务",
+                "services-subtitle": "我们由经过认证的PSW提供全面的服务，旨在为长者提供全方位的支持。",
+                "service1-title": "个人护理",
+                "service1-p": "协助进行日常生活活动（ADLs），如洗浴、穿衣、梳理和行动。",
+                "service2-title": "陪伴服务",
+                "service2-p": "有意义的交谈、社交互动和陪同赴约，以对抗孤独感，促进心理健康。",
+                "service3-title": "膳食准备",
+                "service3-p": "计划和准备满足饮食需求和文化偏好的营养餐食。",
+                "service4-title": "轻度家务",
+                "service4-p": "确保一个干净、安全、舒适的生活环境。",
+                "service5-title": "用药提醒",
+                "service5-p": "及时提醒客户服用他们处方的药物。",
+                "service6-title": "家庭暂息服务",
+                "service6-p": "为家庭照顾者提供急需的休息，让他们知道挚爱之人正被妥善照顾。",
+                "final-cta-title": "我们精通关怀与同情的语言",
+                "final-cta-p": "在Topline Care，我们多元文化的团队能够轻松跨越沟通障碍，建立信任。我们不仅提供护理，更提供安心。",
+                "final-cta-button": "立即联系我们",
+                "footer-text": "&copy; 2025 Topline Care. 版权所有。"
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-translate-id]').forEach(el => {
+                const key = el.dataset.translateId;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+            localStorage.setItem('topline-lang', lang);
+
+            document.querySelector('.lang-switcher a.active').classList.remove('active');
+            document.querySelector(`.lang-switcher a[data-lang="${lang}"]`).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitcher = document.querySelector('.lang-switcher');
+            langSwitcher.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const selectedLang = e.target.dataset.lang;
+                if (selectedLang) {
+                    switchLanguage(selectedLang);
+                }
+            });
+
+            const savedLang = localStorage.getItem('topline-lang') || 'zh';
+            switchLanguage(savedLang);
+            
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav-and-lang');
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
             });
         });
     </script>
